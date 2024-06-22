@@ -45,7 +45,7 @@ char clearl(char c){
     return cc;
 }
 char *names(char c){
-    char *cc[]={"black","red","green","yellow","blue","violet","greenblue","white"};
+    char *cc[]={"black","red","green","yellow","blue","magenta","cyan","white"};
     char ccc=c & 7;
     return cc[ccc];
 }
@@ -54,21 +54,21 @@ int main(){
     char color=0;
     printf("\e[43;37m\n");
     color=setb(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     color=0;
     color=setg(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     color=0;
     color=setr(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     color=7;
     color=clearb(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     color=7;
     color=clearg(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     color=7;
     color=clearr(color);
-    printf("\e[%dm %s \n",color+40,names(color));
+    printf("\e[%xm %s \n",color+0x40,names(color));
     return 0;
 }
