@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 char setr(char c){
     char cc=c;
@@ -49,6 +50,13 @@ char *names(char c){
     char ccc=c & 7;
     return cc[ccc];
 }
+char value(char *c){
+    int i=0;
+    for(i=0;i<8;i++){
+        if(strcmp(c,names(i))==0)return (char)i;
+    }
+    return 0;
+}
 
 int main(){
     char color=0;
@@ -69,6 +77,10 @@ int main(){
     printf("\e[%xm %s \n",color+0x40,names(color));
     color=7;
     color=clearr(color);
+    printf("\e[%xm %s \n",color+0x40,names(color));
+    color=value("black");
+    printf("\e[%xm",color+0x30,names(color));
+    color=value("white");
     printf("\e[%xm %s \n",color+0x40,names(color));
     return 0;
 }
